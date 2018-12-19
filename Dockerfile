@@ -9,7 +9,7 @@ RUN chmod +x /bin/kubectl
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D4284CDD && \
     echo "deb https://repo.iovisor.org/apt/bionic bionic main" | tee /etc/apt/sources.list.d/iovisor.list && \
-    apt-get update && apt-get install -y bcc-tools linux-libc-dev
+    apt-get update && apt-get install -y bcc-tools python3-bcc linux-libc-dev
 
 ADD chroot.sh cleanup.sh /
 
