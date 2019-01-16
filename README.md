@@ -19,13 +19,8 @@ An example pod spec is in [toolbox.yaml](toolbox.yaml).
 bcc
 ---
 
-A method to run bcc on a node without installing anything (tested with
-coreos):
+To run bcc:
 
-1. deploy pod to the node,
-2. copy container tree to a temp dir,
-3. cd to temp dir, run `chroot.sh`.
+`docker run -it --privileged -v /sys:/sys -v /dev:/dev -v /lib/modules:/lib/modules mechpen/toolbox /bin/bash`
 
-Then you should be able to run bcc tools under `/usr/share/bcc/tools`.
-
-After done debugging, must exit chroot and run `cleanup.sh`.
+Or run it as a k8s pod with privileged and the volume mounts.
