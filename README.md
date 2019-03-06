@@ -11,6 +11,7 @@ following tools:
 - socat
 - aws-cli
 - curl
+- llvm/clang
 - bcc
 - and etc.
 
@@ -21,6 +22,6 @@ bcc
 
 To run bcc:
 
-`docker run -it --privileged -v /sys:/sys -v /dev:/dev -v /lib/modules:/lib/modules mechpen/toolbox /bin/bash`
+`docker run --rm -it --privileged -v /sys:/sys -v /dev:/dev -v /lib/modules:/lib/modules mechpen/toolbox /bin/bash`
 
 Or run it as a k8s pod with privileged and the volume mounts.
