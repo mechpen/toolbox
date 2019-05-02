@@ -3,7 +3,8 @@ FROM ubuntu:latest
 RUN apt-get update && apt-get install -y \
     vim tmux less \
     strace gnupg ca-certificates awscli nginx \
-    socat curl iptables iproute2 net-tools iputils-ping dnsutils tcpdump nmap
+    socat curl iptables iproute2 net-tools iputils-ping \
+    traceroute mtr dnsutils tcpdump nmap
 
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 RUN echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list && \
