@@ -22,6 +22,6 @@ bcc
 
 To run bcc:
 
-`docker run --rm -it --privileged -v /sys:/sys -v /dev:/dev -v /lib/modules:/lib/modules mechpen/toolbox /bin/bash`
+`docker run --rm -it --privileged -v /sys:/sys -v /dev:/dev -v /lib/modules:/lib/modules -v /usr/src:/usr/src mechpen/toolbox /bin/bash`
 
 Or run it as a k8s pod with privileged and the volume mounts.
