@@ -11,17 +11,17 @@ following tools:
 - socat
 - aws-cli
 - curl
-- llvm/clang
-- bcc
+- bpftrace
 - and etc.
 
 An example pod spec is in [toolbox.yaml](toolbox.yaml).
 
-bcc
----
+bpftrace
+--------
 
-To run bcc:
+To run bpftrace:
 
-`docker run --rm -it --privileged -v /sys:/sys -v /dev:/dev -v /lib/modules:/lib/modules -v /usr/src:/usr/src mechpen/toolbox /bin/bash`
+`docker run --rm -it --privileged -v /sys:/sys mechpen/toolbox /bin/bash`
 
-Or run it as a k8s pod with privileged and the volume mounts.
+Or run it as a k8s pod with privileged security context and the `/sys`
+volume mounts.

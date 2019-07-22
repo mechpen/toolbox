@@ -1,17 +1,30 @@
-FROM ubuntu:latest
+FROM ubuntu:19.04
 
-RUN apt-get update && apt-get install -y \
-    vim tmux less \
-    strace gnupg ca-certificates awscli nginx \
+RUN apt update
+
+RUN apt install -yq \
+    vim tmux less strace gnupg ca-certificates awscli nginx \
     socat curl iptables iproute2 net-tools iputils-ping \
     traceroute mtr dnsutils tcpdump nmap
 
-RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-RUN echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list && \
-    apt-get update && apt-get install -y kubectl
+RUN apt install -yq \
+    bison cmake flex g++ git libelf-dev \
+    zlib1g-dev libfl-dev systemtap-sdt-dev \
+    llvm-7-runtime llvm-7-dev clang-7 libbpfcc-dev \
+    libbpfcc libclang-7-dev && \
+    git clone https://github.com/iovisor/bpftrace && \
+    mkdir bpftrace/build && \
+    cd bpftrace/build && cmake -DCMAKE_BUILD_TYPE=Release .. && \
+    make && make install && \
+    apt remove --autoremove -yq \
+    bison cmake flex g++ git libelf-dev \
+    zlib1g-dev libfl-dev systemtap-sdt-dev \
+    llvm-7-runtime llvm-7-dev clang-7 libbpfcc-dev
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D4284CDD && \
-    echo "deb https://repo.iovisor.org/apt/bionic bionic main" | tee /etc/apt/sources.list.d/iovisor.list && \
-    apt-get update && apt-get install -y bcc-tools python3-bcc linux-libc-dev
+RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
+    apt-key add - && \
+    echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | \
+    tee -a /etc/apt/sources.list.d/kubernetes.list && \
+    apt update && apt install -y kubectl
 
 CMD ["sleep", "infinity"]
