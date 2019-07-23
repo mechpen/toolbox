@@ -21,6 +21,8 @@ RUN apt install -yq \
     zlib1g-dev libfl-dev systemtap-sdt-dev \
     llvm-7-runtime llvm-7-dev clang-7 libbpfcc-dev
 
+RUN apt install -yq bpfcc-tools python3-bpfcc
+
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
     apt-key add - && \
     echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | \
