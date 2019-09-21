@@ -4,6 +4,7 @@ Toolbox Image
 I use this image to troubleshoot Kubernetes.  The image has the
 following tools:
 
+- git
 - kubectl
 - tcpdump
 - nmap
@@ -13,6 +14,7 @@ following tools:
 - curl
 - bcc
 - bpftrace
+- bcc
 - and etc.
 
 An example pod spec is in [toolbox.yaml](toolbox.yaml).

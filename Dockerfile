@@ -5,7 +5,7 @@ RUN apt update
 RUN apt install -yq \
     vim tmux less strace gnupg ca-certificates awscli nginx \
     socat curl iptables iproute2 net-tools iputils-ping \
-    traceroute mtr dnsutils tcpdump nmap
+    conntrack traceroute mtr dnsutils tcpdump nmap
 
 RUN apt install -yq \
     bison cmake flex g++ git libelf-dev \
