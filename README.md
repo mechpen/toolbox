@@ -14,7 +14,6 @@ following tools:
 - curl
 - bcc
 - bpftrace
-- bcc
 - and etc.
 
 An example pod spec is in [toolbox.yaml](toolbox.yaml).
